@@ -1,6 +1,6 @@
 name: First Workflow
 # Is only triggered on manual activition within Actions
-on: worflow_dispatch
+on: workflow_dispatch
 jobs:
   first-job:
     runs-on: ubuntu-latest
