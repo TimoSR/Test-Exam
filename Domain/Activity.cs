@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
+    
+    /*
+     * Will be tested with a unit test.
+     */
+    
     public class Activity
     {
 
