@@ -1,10 +1,10 @@
-name: backend tests
+name: backend_tests
 
 on:
+  workflow_dispatch:
   push:
     branches:
     - develop
-  workflow_dispatch:
 
 jobs:
   build:
@@ -23,3 +23,5 @@ jobs:
       run: dotnet test
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    - name: Trigger secondary workflow
+      uses: ./.github/workflows/docker-push-master.yml
