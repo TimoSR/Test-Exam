@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - develop
+    - master
 
 jobs:
   build:
@@ -23,3 +23,5 @@ jobs:
       run: dotnet test
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    - name: Trigger secondary workflow
+      uses: ./.github/workflows/docker-push-master.yml
