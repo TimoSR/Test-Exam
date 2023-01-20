@@ -21,7 +21,6 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         
     - name: Build and push
-      if: steps.check_tests.outputs.tests_status == 'success'
       uses: docker/build-push-action@v3
       with:
         push: true
