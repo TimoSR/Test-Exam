@@ -9,10 +9,6 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-    - 
-      name: check if the tests passed
-      id: check_tests
-      run: echo "::set-output name=tests_status::${{ steps.backend_tests.outputs.status }}"
     -
       name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
