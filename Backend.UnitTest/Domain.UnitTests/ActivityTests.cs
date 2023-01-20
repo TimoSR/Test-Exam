@@ -27,8 +27,7 @@ public class ActivityTests
         var result = activity.Id = Guid.NewGuid();
 
         // Assert
-        //Assert.IsTrue(result != Guid.Empty);
-        Assert.IsFalse(result != Guid.Empty);
+        Assert.IsTrue(result != Guid.Empty);
     }
 
     [Test]
