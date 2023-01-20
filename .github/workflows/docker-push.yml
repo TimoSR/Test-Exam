@@ -2,10 +2,8 @@ name: docker-push
 
 on:
   workflow_dispatch:
-  # The code beneth is for automatic push
-  # push:
-  #   branches:
-  #     - 'main'
+  workflow_run:
+    workflows: backend_tests
 
 jobs:
   docker:
@@ -26,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: 00tir2009/coupcreate:latest
+          tags: 00tir2009/test-exam:latest
