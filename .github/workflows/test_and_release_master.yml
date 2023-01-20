@@ -1,4 +1,4 @@
-name: docker_push_master
+name: test_and_release_master
 
 on:
   workflow_dispatch:
