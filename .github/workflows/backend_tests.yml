@@ -1,6 +1,9 @@
 name: backend_tests
 
 on:
+  pull_request:
+    types: [opened, synchronize, closed]
+    branches: [develop]
   workflow_dispatch:
   push:
     branches:
