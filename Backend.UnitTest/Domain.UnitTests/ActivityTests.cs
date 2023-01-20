@@ -27,7 +27,8 @@ public class ActivityTests
         var result = activity.Id = Guid.NewGuid();
 
         // Assert
-        Assert.IsTrue(result != Guid.Empty);
+        //Assert.IsTrue(result != Guid.Empty);
+        Assert.IsFalse(result != Guid.Empty);
     }
 
     [Test]
@@ -65,7 +66,7 @@ public class ActivityTests
         // Act
 
         activity.IsCancelled = true;
-        
+
         // Assert
         Assert.IsTrue(activity.IsCancelled);
     }
