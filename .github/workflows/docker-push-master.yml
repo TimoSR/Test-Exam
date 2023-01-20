@@ -1,0 +1,20 @@
+name: docker-push-master
+
+on:
+  push:
+      branches:
+      - master
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    - name: check if the tests passed
+      id: check_tests
+      run: echo "::set-output name=tests_status::${{ steps.backend_tests.outputs.status }}"
+    - name: Build and push
+      if: steps.check_tests.outputs.tests_status == 'success'
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: 00tir2009/test-exam:latest

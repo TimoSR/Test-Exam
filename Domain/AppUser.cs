@@ -6,6 +6,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Domain
 {
+    
+    /*
+     * Will be tested with integration tests as IdentityUser is part of
+     * the of the .Net Core IdentityUser library. 
+     */
+    
     public class AppUser : IdentityUser
     {
         public string? DisplayName { get; set; }
