@@ -1,9 +1,10 @@
 name: docker-push-master
 
 on:
-  push:
-      branches:
-      - master
+  workflow_run:
+    types: [success]
+    # Replace with the name of your "backend_tests" workflow
+    workflows: backend_tests
 
 jobs:
   docker:
