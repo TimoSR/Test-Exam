@@ -1,10 +1,7 @@
 name: docker-push-master
 
 on:
-  workflow_run:
-    types: [success]
-    # Replace with the name of your "backend_tests" workflow
-    workflows: backend_tests
+  workflow_dispatch:
 
 jobs:
   docker:
