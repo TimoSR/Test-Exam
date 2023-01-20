@@ -1,11 +1,11 @@
 name: test_and_release_master
 
 on:
+  pull_request:
   workflow_dispatch:
   push:
     branches:
     - master
-
 jobs:
   test_backend:
       runs-on: ubuntu-latest
