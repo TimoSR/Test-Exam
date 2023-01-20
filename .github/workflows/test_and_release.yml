@@ -1,4 +1,4 @@
-name: docker-push-master
+name: docker_push_master
 
 on:
   workflow_dispatch:
