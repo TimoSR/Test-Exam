@@ -4,27 +4,17 @@ on:
   push:
       branches:
       - master
-  success:
-    jobs:
-    - backend_tests
 
 jobs:
   docker:
     runs-on: ubuntu-latest
-    needs: [backend_tests]
     steps:
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: 00tir2009/test-exam:latest
+    - name: check if the tests passed
+      id: check_tests
+      run: echo "::set-output name=tests_status::${{ steps.backend_tests.outputs.status }}"
+    - name: Build and push
+      if: steps.check_tests.outputs.tests_status == 'success'
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: 00tir2009/test-exam:latest
