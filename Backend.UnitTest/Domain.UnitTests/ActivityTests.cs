@@ -65,7 +65,7 @@ public class ActivityTests
         // Act
 
         activity.IsCancelled = true;
-        
+
         // Assert
         Assert.IsTrue(activity.IsCancelled);
     }
