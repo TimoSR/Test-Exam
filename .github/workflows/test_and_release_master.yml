@@ -2,6 +2,7 @@ name: test_and_release_master
 
 on:
   pull_request:
+    types: [closed]
   workflow_dispatch:
   push:
     branches:
