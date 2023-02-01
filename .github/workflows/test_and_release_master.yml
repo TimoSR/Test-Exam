@@ -3,6 +3,8 @@ name: test_and_release_master
 on:
   pull_request:
     types: [closed]
+    branches:
+    - master
   workflow_dispatch:
   push:
     branches:
