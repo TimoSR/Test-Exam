@@ -15,7 +15,7 @@ jobs:
       steps:
       
       - name: Check if pull request is merged
-        if: github.event.pull_request.merged == false
+        if: github.event.pull_request.merged == true
         run: echo "Pull request was not merged. Stopping workflow."
         continue-on-error: false
         
