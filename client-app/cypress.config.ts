@@ -1,7 +1,7 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  projectId: 'd6v5xg',
+  projectId: "faiuga",
   e2e: {
     experimentalStudio: true,
     setupNodeEvents(on, config) {
