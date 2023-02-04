@@ -20,6 +20,7 @@ export default observer (function Navbar() {
                 </Menu.Item>
                 <Menu.Item as={NavLink} to='/activities' name="Activities" />
                 <Menu.Item as={NavLink} to='/errors' name="Errors" />
+                <Menu.Item as={NavLink} to='/weather' name="Weather" />
                 <Menu.Item>
                     {/** 
                      * As openForm expects and optional id
