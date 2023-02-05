@@ -35,6 +35,10 @@ jobs:
         run: dotnet test
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
+
+      - name: Run the Docker command
+        run: |
+          docker run --name dev -e POSTGRES_USER=${{ secrets.POSTGRES_USER }} -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} -p 5432:5432 -d postgres:latest
       
       - name: Start Project
         run: |
