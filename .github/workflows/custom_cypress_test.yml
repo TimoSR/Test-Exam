@@ -17,9 +17,7 @@ jobs:
       uses: docker://postgres:latest
 
     - name: Run the Docker command
-      run: |
-        docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
-
+      run: docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
 
     - name: Check out project
       uses: actions/checkout@v2
