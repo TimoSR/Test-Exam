@@ -10,13 +10,11 @@ jobs:
     
     steps:
     
-    - name: Install Docker CLI
-      run: |
-        sudo apt-get install -y docker.io
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Login to Docker Hub
-      run: |
-        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+    - name: Pull down Docker Image
+      uses: docker://postgres:latest
 
     - name: Run the Docker command
       run: |
