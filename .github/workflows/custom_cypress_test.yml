@@ -8,18 +8,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-
     steps:
-    - name: Set up Docker
-      uses: actions/setup-docker@v2
+    
+    - name: Install Docker CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+
+    - name: Login to Docker Hub
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
     - name: Run the Docker command
       run: |
         docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
 
+
     - name: Check out project
       uses: actions/checkout@v2
       
-    - name: Checkout git project
+    - name: Setup dotnet project
       
       run: |
         wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
