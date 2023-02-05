@@ -32,6 +32,8 @@ jobs:
           cd API
           nohup dotnet run &
         env:
+          # The .NET Core CLI will not send any telemetry data to Microsoft.
+          # This is a recommended best practice for privacy.
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
       - name: Run Cypress tests
