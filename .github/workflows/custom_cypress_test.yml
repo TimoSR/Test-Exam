@@ -16,7 +16,7 @@ jobs:
     - name: Pull down Docker Image
       uses: |
         docker://postgres:latest
-        docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d 
+        docker run -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d 
 
     - name: Check out project
       uses: actions/checkout@v2
