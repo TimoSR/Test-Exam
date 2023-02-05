@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect} from 'react';
+import React, { Fragment, useEffect, useState} from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import { Container } from 'semantic-ui-react';
 import Navbar from './Navbar';
@@ -17,6 +17,7 @@ import { useStore } from '../stores/store';
 import LoadingComponent from './LoadingComponents';
 import ModalContainer from '../common/modals/ModalContainer';
 import PrivateRoute from './PrivateRoute';
+import WeatherComponent from '../../features/weatherwidget/WeatherComponent';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
               <PrivateRoute exact path='/activities' component={ActivityDashBoard}/>
               <PrivateRoute path='/activities/:id' component={ActivityDetails}/>
               <PrivateRoute key={location.key} path={['/createActivity', '/manage/:id']} component={ActivityForm}/>
+              <PrivateRoute exact path='/weather' component={WeatherComponent}/>
               <Route path='/errors' component={TestErrors}/>
               <Route path='/server-error' component={ServerError}/>
               <Route component={NotFound} />

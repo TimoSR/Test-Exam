@@ -1,4 +1,4 @@
-name: First Workflow
+name: testing_ubuntu_cli
 # Is only triggered on manual activition within Actions
 on: workflow_dispatch
 jobs:

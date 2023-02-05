@@ -1,0 +1,43 @@
+name: cypress_Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  project_setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run the Docker command
+        run: |
+          docker run --name dev -e POSTGRES_USER=${{ secrets.POSTGRES_USER }} -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} -p 5432:5432 -d postgres:latest
+        
+      - name: Setup dotnet project
+        
+        run: |
+          wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+          sudo dpkg -i packages-microsoft-prod.deb
+          sudo apt-get update
+          sudo apt-get install -y apt-transport-https
+          sudo apt-get update
+          sudo apt-get install -y dotnet-sdk-6.0
+
+      # nohup helps with running the dotnet build in the background
+
+      - name: Start Project
+        run: |
+          cd API
+          nohup dotnet run &
+        env:
+          # The .NET Core CLI will not send any telemetry data to Microsoft.
+          # This is a recommended best practice for privacy.
+          DOTNET_CLI_TELEMETRY_OPTOUT: 1
+
+      - name: Run Cypress tests
+        run: |
+          ls
+          cd client-app
+          npm install
+          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
