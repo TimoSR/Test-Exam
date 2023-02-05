@@ -1,4 +1,4 @@
-name: Custom_Cypress_Test
+name: cypress_Test
 
 on:
   push:
