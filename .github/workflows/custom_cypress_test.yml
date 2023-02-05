@@ -13,7 +13,7 @@ jobs:
 
       - name: Run the Docker command
         run: |
-          docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
+          docker run --name dev -e POSTGRES_USER=${{ secrets.POSTGRES_USER }} -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} -p 5432:5432 -d postgres:latest
         
       - name: Setup dotnet project
         
