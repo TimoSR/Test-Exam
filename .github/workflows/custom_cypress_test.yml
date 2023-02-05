@@ -1,4 +1,4 @@
-name: docker-push
+name: Custom Cypress Test
 
 on:
   workflow_dispatch:
