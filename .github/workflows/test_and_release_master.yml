@@ -35,6 +35,20 @@ jobs:
         run: dotnet test
         env:
           DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      
+      - name: Start Project
+        run: |
+          cd API
+          nohup dotnet run &
+        env:
+          DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      
+      - name: Run Cypress tests
+        run: |
+          ls
+          cd client-app
+          npm install
+          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
           
   docker:
     runs-on: ubuntu-latest
