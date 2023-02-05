@@ -39,4 +39,4 @@ jobs:
           ls
           cd client-app
           npm install
-          npx cypress run --record --key 88843a55-6fc2-41cf-b148-7d14bc7044b9
+          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
