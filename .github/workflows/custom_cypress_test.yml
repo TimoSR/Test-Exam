@@ -17,7 +17,6 @@ jobs:
       run: |
         docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
 
-
     - name: Check out project
       uses: actions/checkout@v2
       
@@ -38,3 +37,7 @@ jobs:
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
+    - name: Start Cypress Server
+      run: |
+        cd client-app
+        npx cypress run --record --key 88843a55-6fc2-41cf-b148-7d14bc7044b9
