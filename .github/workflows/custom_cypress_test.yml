@@ -1,6 +1,7 @@
-name: Custom Cypress Test
+name: Custom_Cypress_Test
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
