@@ -32,12 +32,12 @@ public class ActivityAttendeeTests
         yield return new TestCaseData("user000", false);
     }
     
-    private class TestProperties
+    private class SetProperties
     {
 
         public ActivityAttendee attendee;
 
-        public TestProperties(string appUserId, bool isHost)
+        public SetProperties(string appUserId, bool isHost)
         {
             attendee = new ActivityAttendee
             {
@@ -85,7 +85,7 @@ public class ActivityAttendeeTests
     public void Test_AppUserId_ShouldBeSetCorrectly(string appUserId, bool isHost)
     {
         // Arrange
-        var testProperties = new TestProperties(appUserId, isHost);
+        var testProperties = new SetProperties(appUserId, isHost);
         var attendee = testProperties.attendee;
     
         // Act
@@ -99,7 +99,7 @@ public class ActivityAttendeeTests
     public void Test_AppUser_ShouldBeSetCorrectly(string appUserId, bool isHost)
     {
         // Arrange
-        var testProperties = new TestProperties(appUserId, isHost);
+        var testProperties = new SetProperties(appUserId, isHost);
         var attendee = testProperties.attendee;
 
         // Act
@@ -114,7 +114,7 @@ public class ActivityAttendeeTests
     public void Test_ActivityId_ShouldBeSetCorrectly(string appUserId, bool isHost)
     {
         // Arrange
-        var testProperties = new TestProperties(appUserId, isHost);
+        var testProperties = new SetProperties(appUserId, isHost);
         var attendee = testProperties.attendee;
     
         // Act
@@ -128,7 +128,7 @@ public class ActivityAttendeeTests
     public void Test_Activity_ShouldBeSetCorrectly(string appUserId, bool isHost)
     {
         // Arrange
-        var testProperties = new TestProperties(appUserId, isHost);
+        var testProperties = new SetProperties(appUserId, isHost);
         var attendee = testProperties.attendee;
 
         // Act
@@ -142,7 +142,7 @@ public class ActivityAttendeeTests
     public void Test_IsHost_ShouldBeSetCorrectly(string appUserId, bool isHost)
     {
         // Arrange
-        var testProperties = new TestProperties(appUserId, isHost);
+        var testProperties = new SetProperties(appUserId, isHost);
         var attendee = testProperties.attendee;
     
         // Act
