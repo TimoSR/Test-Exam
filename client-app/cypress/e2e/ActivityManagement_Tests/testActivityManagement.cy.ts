@@ -30,12 +30,28 @@ describe('example website', () => {
         });
     })
 
+  ///* ==== Test Created with Cypress Studio ==== */
+  //it('Test case 0: Template', function() {
+  //    /* ==== Generated with Cypress Studio ==== */
+  //    cy.get('.container > :nth-child(5) > .ui').click();
+  //    cy.get('.form > :nth-child(1) > input').clear();
+  //    cy.get('.form > :nth-child(1) > input').type('title');
+  //    cy.get('.react-datepicker__input-container > input').click();
+  //    cy.get('.react-datepicker__day--006').click();
+  //    cy.get('textarea').click();
+  //    cy.get('textarea').type('description');
+  //    cy.get('.form > :nth-child(5) > .ui').click();
+  //    cy.get('.selected').click();
+  //    cy.get('.blue').click();
+  //    /* ==== End Cypress Studio ==== */
+  //});
+
     /* ==== Test Created with Cypress Studio ==== */
-    it('Test case 0: Template', function() {
+    it('Test case 1: Title minimum 3 characters', function() {
         /* ==== Generated with Cypress Studio ==== */
         cy.get('.container > :nth-child(5) > .ui').click();
         cy.get('.form > :nth-child(1) > input').clear();
-        cy.get('.form > :nth-child(1) > input').type('title');
+        cy.get('.form > :nth-child(1) > input').type('12');
         cy.get('.react-datepicker__input-container > input').click();
         cy.get('.react-datepicker__day--006').click();
         cy.get('textarea').click();
@@ -47,16 +63,50 @@ describe('example website', () => {
     });
 
     /* ==== Test Created with Cypress Studio ==== */
-    it('Test case 1: Title: 3 characters', function() {
+    it('Test case 2: Title max 100 characters', function() {
         /* ==== Generated with Cypress Studio ==== */
         cy.get('.container > :nth-child(5) > .ui').click();
         cy.get('.form > :nth-child(1) > input').clear();
-        cy.get('.form > :nth-child(1) > input').type('title');
+        cy.get('.form > :nth-child(1) > input').type('HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello!');
         cy.get('.react-datepicker__input-container > input').click();
         cy.get('.react-datepicker__day--006').click();
         cy.get('textarea').click();
         cy.get('textarea').type('description');
         cy.get('.form > :nth-child(5) > .ui').click();
+        cy.get('.selected').click();
+        cy.get('.blue').click();
+        /* ==== End Cypress Studio ==== */
+    });
+
+    /* ==== Test Created with Cypress Studio ==== */
+    it('Test case 5: Description minimum 10 characters', function() {
+        /* ==== Generated with Cypress Studio ==== */
+        cy.get('.container > :nth-child(5) > .ui').click();
+        cy.get('.form > :nth-child(1) > input').clear();
+        cy.get('.form > :nth-child(1) > input').type('CharacterTitle');
+        cy.get('.react-datepicker__input-container > input').click();
+        cy.get('.react-datepicker__day--006').click();
+        cy.get('textarea').click();
+        cy.get('textarea').type('123456789');
+        cy.get('.form > :nth-child(5) > .ui').click();
+        cy.get('.selected').click();
+        cy.get('.blue').click();
+        /* ==== End Cypress Studio ==== */
+    });
+
+    /* ==== Test Created with Cypress Studio ==== */
+    it('Test case 6: Description maximum 1000 characters', function() {
+        /* ==== Generated with Cypress Studio ==== */
+        cy.get('.container > :nth-child(5) > .ui').click();
+        cy.get('.form > :nth-child(1) > input').clear();
+        cy.get('.form > :nth-child(1) > input').type('CharacterTitle');
+        cy.get('.react-datepicker__input-container > input').click();
+        cy.get('.react-datepicker__day--006').click();
+        cy.get('textarea').click();
+        cy.get('textarea').type('p0PpKcHgEcttLn8WgKjnDQrbdYfZgJQx1AdTgTbTq3qoEk70XzW9R6IMHVcibj04jZthx7jdeRJUyxV6U0gEuxu2jm79OgcJOfV7qYjKwclV0cxM4n0Q7bJN23Kj5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKcPVJ4n4jf1I7Kj5i5n5e5z80N5SJ7NzZJchHjKx7U1R6UACe6yvJEz1ix7cdjkG3YV7wZjKc1');
+        /* ==== End Cypress Studio ==== */
+        /* ==== Generated with Cypress Studio ==== */
+        cy.get(':nth-child(5) > .ui > .divider').click();
         cy.get('.selected').click();
         cy.get('.blue').click();
         /* ==== End Cypress Studio ==== */
