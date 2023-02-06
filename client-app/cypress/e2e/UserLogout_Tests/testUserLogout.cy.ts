@@ -31,34 +31,10 @@ describe('example website', () => {
     })
 
     /* ==== Test Created with Cypress Studio ==== */
-    it('Test case 0: Template', function() {
+    it('Test case: logout', function() {
         /* ==== Generated with Cypress Studio ==== */
-        cy.get('.container > :nth-child(5) > .ui').click();
-        cy.get('.form > :nth-child(1) > input').clear();
-        cy.get('.form > :nth-child(1) > input').type('title');
-        cy.get('.react-datepicker__input-container > input').click();
-        cy.get('.react-datepicker__day--006').click();
-        cy.get('textarea').click();
-        cy.get('textarea').type('description');
-        cy.get('.form > :nth-child(5) > .ui').click();
-        cy.get('.selected').click();
-        cy.get('.blue').click();
-        /* ==== End Cypress Studio ==== */
-    });
-
-    /* ==== Test Created with Cypress Studio ==== */
-    it('Test case 1: Title: 3 characters', function() {
-        /* ==== Generated with Cypress Studio ==== */
-        cy.get('.container > :nth-child(5) > .ui').click();
-        cy.get('.form > :nth-child(1) > input').clear();
-        cy.get('.form > :nth-child(1) > input').type('title');
-        cy.get('.react-datepicker__input-container > input').click();
-        cy.get('.react-datepicker__day--006').click();
-        cy.get('textarea').click();
-        cy.get('textarea').type('description');
-        cy.get('.form > :nth-child(5) > .ui').click();
-        cy.get('.selected').click();
-        cy.get('.blue').click();
+        cy.get('.divider').click();
+        cy.get('.active > .menu > div.item').click();
         /* ==== End Cypress Studio ==== */
     });
 })
