@@ -82,7 +82,8 @@ public class AppUserTests
         // Test case 3: Test the display name with a null value
         yield return new TestCaseData(null, "Bio 3", null)
             .SetName("Test case 3: Null display name")
-            .SetDescription("Test the display name with a null value");
+            .SetDescription("Test the display name with a null value")
+            .SetDescription("Expect it to succeed");
 
         // Test case 4: Test the bio with a non-empty string
         yield return new TestCaseData("John Doe", "I am a software engineer.", null)
