@@ -49,7 +49,7 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Id_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
+        // Arrange
         var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
@@ -62,7 +62,7 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Title_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
+        // Arrange
         var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
@@ -76,7 +76,7 @@ public class ActivityTests
     public void Date_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
         
-        // Setup
+        // Arrange
         var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
@@ -89,7 +89,7 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Description_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
+        // Arrange
         var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
@@ -102,7 +102,7 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Category_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
+        // Arrange
         var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
@@ -115,12 +115,12 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void IsCancelled_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
+        // Arrange
         var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.IsCancelled;
-    
+        
         // Assert
         Assert.AreEqual(isCancelled, result);
     }
@@ -128,7 +128,7 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Attendees_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
+        // Arrange
         var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
@@ -139,4 +139,3 @@ public class ActivityTests
     }
 
 }
-
