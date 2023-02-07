@@ -10,13 +10,13 @@ namespace Backend.IntegrationTests.API.IntegrationTests.Controllers;
 public class ActivitiesControllerTests
 {
     private HttpClient _client;
-    
+
     private class User
     {
         public string email { get; set; }
         public string password { get; set; }
     }
-    
+
     public class LoginResponse
     {
         public string displayName { get; set; }
@@ -25,6 +25,8 @@ public class ActivitiesControllerTests
         public string image { get; set; }
     }
 
+    // Could not get this to work. 
+
     [SetUp]
     public void ClientConnection()
     {
@@ -32,7 +34,7 @@ public class ActivitiesControllerTests
         _client = new HttpClient();
         _client.BaseAddress = new Uri("https://localhost:7032");
     }
-    
+
     [Test]
     public void ClientLogin()
     {
@@ -47,10 +49,10 @@ public class ActivitiesControllerTests
         };
 
         string json = JsonConvert.SerializeObject(user);
-        
+
         // string interpolation in C#
         // API Address "/account/login"
-        
+
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         // Act
@@ -61,7 +63,7 @@ public class ActivitiesControllerTests
 
         if (response.IsSuccessStatusCode)
         {
-            
+
             var responseContent = response.Content.ReadAsStringAsync().Result;
 
             // do something with loginResponse
@@ -72,7 +74,7 @@ public class ActivitiesControllerTests
         {
             Console.WriteLine("Error: " + response.StatusCode);
         }
-        
+
     }
 
 }
