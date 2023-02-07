@@ -7,7 +7,6 @@ using NUnit.Framework;
 public class ActivityAttendeeTests
 {
     
-    
     private static IEnumerable<TestCaseData> TestCases()
     {
         // "Test with appUserId = user123 and isHost = true", "This test case tests the scenario where the attendee is a host."
