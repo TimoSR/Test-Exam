@@ -12,6 +12,7 @@ COPY "Infrastructure/Infrastructure.csproj" "Infrastructure/Infrastructure.cspro
 COPY "BookStore.Core/BookStore.Core.csproj" "BookStore.Core/BookStore.Core.csproj"
 COPY "Backend.IntegrationTests/Backend.IntegrationTests.csproj" "Backend.IntegrationTests/Backend.IntegrationTests.csproj"
 COPY "Backend.UnitTest/Backend.UnitTest.csproj" "Backend.UnitTest/Backend.UnitTest.csproj"
+COPY "Backend.UnitTest/Backend.IntegrationTests.csproj" "Backend.UnitTest/Backend.IntegrationTests.csproj"
 
 RUN dotnet restore "Duelist-Pro.sln"
 
