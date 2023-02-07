@@ -29,6 +29,8 @@ jobs:
         nohup dotnet run &
         
     - name: Run Tests
-      run: dotnet test
+      run: |
+        ls
+        dotnet test
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
