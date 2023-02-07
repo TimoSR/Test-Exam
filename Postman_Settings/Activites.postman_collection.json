@@ -1,0 +1,1967 @@
+{
+	"info": {
+		"_postman_id": "e7b149c5-cea9-44ea-9d68-62f070cdef37",
+		"name": "Activites",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3117050"
+	},
+	"item": [
+		{
+			"name": "CRUD Operations",
+			"item": [
+				{
+					"name": "Get Activities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/Activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity {id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/Activities/018d6223-c67b-40ce-96be-b124b94decd6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"018d6223-c67b-40ce-96be-b124b94decd6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Activity",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require(\"moment\");",
+									"",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"{{$guid}}\",\n    \"title\" : \"Postman Test\",\n    \"description\" : \"Description of the test even\",\n    \"category\" : \"Culture\",\n    \"date\" : \"{{activityDate}}\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/activities/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Activity",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Test Create Activity Updated 7\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Activities/018d6223-c67b-40ce-96be-b124b94decd6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"018d6223-c67b-40ce-96be-b124b94decd6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Activity",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/Activities/59cba792-dbc4-43ce-9ef3-bec0d750302d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"59cba792-dbc4-43ce-9ef3-bec0d750302d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Testing Activities",
+			"item": [
+				{
+					"name": "Create Empty Activity",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Activities/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get non existant Activity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/Activities/018d6223-c67b-40ce-96be-b124b94decd4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"018d6223-c67b-40ce-96be-b124b94decd4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete non existant Activity",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/Activities/018d6223-c67b-40ce-96be-b124b94decd2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"018d6223-c67b-40ce-96be-b124b94decd2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Activity Correctly",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require(\"moment\");",
+									"",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Postman Test\",\n    \"description\" : \"Description of the test even\",\n    \"category\" : \"Culture\",\n    \"date\" : \"{{activityDate}}\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Activities/02e6b679-c2a9-4de3-9f9a-50d4e0f5cf2b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"02e6b679-c2a9-4de3-9f9a-50d4e0f5cf2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Failed To Edit Activity (Only Works If us changed, so copy the Edit you before)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Postman Test\",\n    \"description\" : \"Description of the test even\",\n    \"category\" : \"Culture\",\n    \"date\" : \"2022-12-14T22:08:44.042\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Activities/02e6b679-c2a9-4de3-9f9a-50d4e0f5cf2b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"02e6b679-c2a9-4de3-9f9a-50d4e0f5cf2b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Testing",
+			"item": [
+				{
+					"name": "Login user successful",
+					"protocolProfileBehavior": {
+						"disableUrlEncoding": false,
+						"followRedirects": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bob@test.com\",\n    \"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user bad password",
+					"protocolProfileBehavior": {
+						"disableUrlEncoding": false,
+						"followRedirects": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"james@test.com\",\n    \"password\": \"Pa$$w0r\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user bad email",
+					"protocolProfileBehavior": {
+						"disableUrlEncoding": false,
+						"followRedirects": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"james@test.co\",\n    \"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get activity no auth",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity auth",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImJvYiIsIm5hbWVpZCI6ImU5MGU5OTIxLWIxNWItNDBjNC04NzgyLTcyZWUyMDBkMzRjYSIsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwibmJmIjoxNjcwMjM1OTc1LCJleHAiOjE2NzA4NDA3NzUsImlhdCI6MTY3MDIzNTk3NX0.VDWycZHvzH0LCFBcGXkyrrXhzRt96QUtesuK8O5q6URVxhpkKsmki9hxDe7jagTMx6jAxBoR1-VMuEENrKHw8A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/Activities/1258dbe6-b63d-40fc-94a8-4b7dd91fd9b2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Activities",
+								"1258dbe6-b63d-40fc-94a8-4b7dd91fd9b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user successfully",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DisplayName\" : \"Tim\",\n    \"UserName\" : \"TimoSR\",\n    \"Email\" : \"Timothy.s.rasmussen@gmail.com\",\n    \"Password\" : \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user duplicate email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DisplayName\" : \"Tom\",\n    \"UserName\" : \"tom\",\n    \"Email\" : \"Timothy.s.rasmussen@gmail.com\",\n    \"Password\" : \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user duplicate username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DisplayName\" : \"Tom\",\n    \"UserName\" : \"TimoSR\",\n    \"Email\" : \"Tom@gmail.com\",\n    \"Password\" : \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user with weak password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"DisplayName\" : \"Tom\",\n    \"UserName\" : \"tom\",\n    \"Email\" : \"Tom@gmail.com\",\n    \"Password\" : \"letmein\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user validation error",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"sally@test.com\",\n    \"username\" : \"sally\",\n    \"password\" : \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImJvYiIsIm5hbWVpZCI6ImU5MGU5OTIxLWIxNWItNDBjNC04NzgyLTcyZWUyMDBkMzRjYSIsImVtYWlsIjoiYm9iQHRlc3QuY29tIiwibmJmIjoxNjcwMjM1OTc1LCJleHAiOjE2NzA4NDA3NzUsImlhdCI6MTY3MDIzNTk3NX0.VDWycZHvzH0LCFBcGXkyrrXhzRt96QUtesuK8O5q6URVxhpkKsmki9hxDe7jagTMx6jAxBoR1-VMuEENrKHw8A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Testing Functionality with Token",
+			"item": [
+				{
+					"name": "Login as Bob and save token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function() {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('userName');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('token', user.token);",
+									"}",
+									"",
+									"pm.test(\"Global token has ben set\", function() {",
+									"    var token = pm.globals.get('token');",
+									"    pm.expect(token).to.eql(user.token);",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bob@test.com\",\n    \"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List of Activities",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating new activity with login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require(\"moment\");",
+									"",
+									"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"{{$guid}}\",\n    \"title\" : \"Test event with Bob as host\",\n    \"description\" : \"Description of the test even\",\n    \"category\" : \"Culture\",\n    \"date\" : \"{{activityDate}}\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/activities/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/activities/3ca7a251-809c-4913-837c-cfedf080cad1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								"3ca7a251-809c-4913-837c-cfedf080cad1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as James and save token to env",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const user = pm.response.json();",
+									"",
+									"pm.test(\"Has properties\", function() {",
+									"    pm.expect(user).to.have.property('displayName');",
+									"    pm.expect(user).to.have.property('userName');",
+									"    pm.expect(user).to.have.property('image');",
+									"    pm.expect(user).to.have.property('token');",
+									"});",
+									"",
+									"if (pm.test(\"Has properties\")) {",
+									"    pm.globals.set('james_token', user.token);",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"james@test.com\",\n    \"password\": \"Pa$$w0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attend / Cancel (double send for cancel) attendance as James",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{james_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/activities/3ca7a251-809c-4913-837c-cfedf080cad1/attend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								"3ca7a251-809c-4913-837c-cfedf080cad1",
+								"attend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Activity as host ( isCancelled true/false)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/activities/0539074e-812e-4239-b479-7cdd05a379a7/attend",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								"0539074e-812e-4239-b479-7cdd05a379a7",
+								"attend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit an Activity as Bob the Host",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"0539074e-812e-4239-b479-7cdd05a379a7\",\n    \"title\": \"Editing with Bob as host\",\n    \"date\": \"2022-12-20T22:31:52.785\",\n    \"description\": \"Description of the test even\",\n    \"category\": \"Culture\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/activities/3ca7a251-809c-4913-837c-cfedf080cad1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								"3ca7a251-809c-4913-837c-cfedf080cad1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Activity as James but Bob as host",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{james_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"0539074e-812e-4239-b479-7cdd05a379a7\",\n    \"title\": \"Editing with James\",\n    \"date\": \"2022-12-20T22:31:52.785\",\n    \"description\": \"Description of the test even\",\n    \"category\": \"Culture\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/activities/3ca7a251-809c-4913-837c-cfedf080cad1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								"3ca7a251-809c-4913-837c-cfedf080cad1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Try to delete activity as James when Bob is host",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{james_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/activities/3ca7a251-809c-4913-837c-cfedf080cad1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activities",
+								"3ca7a251-809c-4913-837c-cfedf080cad1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Neo4J",
+			"item": [
+				{
+					"name": "Department",
+					"item": [
+						{
+							"name": "Creating new Department",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require(\"moment\");",
+											"",
+											"pm.environment.set('activityDate', moment().add(14, 'days').toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\" : \"{{$guid}}\",\n    \"title\" : \"Best Friends\"\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/department",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"department"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Departments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/department",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"department"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Department {Id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/department/dabe16bc-e303-4ffb-a060-a0ef937d3531",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"department",
+										"dabe16bc-e303-4ffb-a060-a0ef937d3531"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Department",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"id\": \"a55d1ef2-95bd-4642-b232-ed2ab8cb0399\",\n        \"title\": \"Best Friends 2\"\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/department/dabe16bc-e303-4ffb-a060-a0ef937d3531",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"department",
+										"dabe16bc-e303-4ffb-a060-a0ef937d3531"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Apartment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/department/a55d1ef2-95bd-4642-b232-ed2ab8cb0399",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"department",
+										"a55d1ef2-95bd-4642-b232-ed2ab8cb0399"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Create Employee",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\" : \"{{$guid}}\",\n    \"name\" : \"James Carlson\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/employee",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"employee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Employees",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/employee",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"employee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Assign_Employee",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/employee/6c1a0abb-2e43-40ea-849a-afd70bedb32d/assign_employee/d9411bd1-5c4b-4ec4-98c2-1906985df3dd",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"employee",
+										"6c1a0abb-2e43-40ea-849a-afd70bedb32d",
+										"assign_employee",
+										"d9411bd1-5c4b-4ec4-98c2-1906985df3dd"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Activities",
+					"item": [
+						{
+							"name": "Creating new Activity",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require(\"moment\");",
+											"",
+											"pm.environment.set('activityDate', moment().add(Math.floor(Math.random()* 365), 'days').toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\" : \"{{$guid}}\",\n    \"title\" : \"Hello World!\",\n    \"date\" : \"{{activityDate}}\",\n    \"description\" : \"Fucking Party!\",\n    \"category\" : \"Fest\",\n    \"address\" : \"Sadhavn\",\n    \"isCancelled\" : false\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/NeoActivity/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoActivity",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Activities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoActivity",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoActivity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Activity {Id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoActivity/fc54cb1e-9804-45c4-a845-98fd99a2bce2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoActivity",
+										"fc54cb1e-9804-45c4-a845-98fd99a2bce2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Activity",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require(\"moment\");",
+											"",
+											"pm.environment.set('activityDate', moment().add(Math.floor(Math.random()* 365), 'days').toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"fc54cb1e-9804-45c4-a845-98fd99a2bce2\",\n    \"title\": \"Bytur\",\n    \"date\": \"2023-11-22T10:55:41.97Z\",\n    \"description\": \"Lad os mødes kl. 22\",\n    \"category\": \"Druk\",\n    \"address\": \"Tivoli\",\n    \"isCancelled\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/NeoActivity/fc54cb1e-9804-45c4-a845-98fd99a2bce2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoActivity",
+										"fc54cb1e-9804-45c4-a845-98fd99a2bce2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Activity",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoActivity/248e2ed1-72a8-43cb-a6e4-d1a492cef8a7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoActivity",
+										"248e2ed1-72a8-43cb-a6e4-d1a492cef8a7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\" : \"{{$guid}}\",\n    \"userName\" : \"SelmaB\",\n    \"displayName\" : \"Selmovski\",\n    \"email\" : \"Selma@gmail.com\",\n    \"address\" : \"Skovbrynet 2G, 3. 21\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/NeoUser",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoUser",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Attends",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoUser/6da0d0f1-6cee-4d46-b119-c37b2454b8e1/attends/7bab1c4d-3076-47e0-8c55-2e5aa25afe3a",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser",
+										"6da0d0f1-6cee-4d46-b119-c37b2454b8e1",
+										"attends",
+										"7bab1c4d-3076-47e0-8c55-2e5aa25afe3a"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Attending",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoUser/6da0d0f1-6cee-4d46-b119-c37b2454b8e1/RemoveAttends/fc54cb1e-9804-45c4-a845-98fd99a2bce2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser",
+										"6da0d0f1-6cee-4d46-b119-c37b2454b8e1",
+										"RemoveAttends",
+										"fc54cb1e-9804-45c4-a845-98fd99a2bce2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddHost",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoUser/2f1f33cc-e10b-4882-b159-02a8be00ea79/ishost/d41ba6c2-2e41-43a7-8522-78b1068ca0ef",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser",
+										"2f1f33cc-e10b-4882-b159-02a8be00ea79",
+										"ishost",
+										"d41ba6c2-2e41-43a7-8522-78b1068ca0ef"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Comment",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require(\"moment\");",
+											"",
+											"pm.environment.set('activityDate', moment().add(Math.floor(Math.random()* 365), 'days').toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\" : \"{{$guid}}\",\n    \"comment\" : \"Jaaa! Det bliver så vildt!\",\n    \"date\" : \"{{activityDate}}\"\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/NeoUser/6da0d0f1-6cee-4d46-b119-c37b2454b8e1/AddComment/77bb705f-4cbe-4f4e-9682-a26bb4d90e8c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser",
+										"6da0d0f1-6cee-4d46-b119-c37b2454b8e1",
+										"AddComment",
+										"77bb705f-4cbe-4f4e-9682-a26bb4d90e8c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "IsWatching",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoUser/6da0d0f1-6cee-4d46-b119-c37b2454b8e1/IsWatching/fc54cb1e-9804-45c4-a845-98fd99a2bce2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser",
+										"6da0d0f1-6cee-4d46-b119-c37b2454b8e1",
+										"IsWatching",
+										"fc54cb1e-9804-45c4-a845-98fd99a2bce2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetActivityComments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoUser/6da0d0f1-6cee-4d46-b119-c37b2454b8e1/ActivityComments/77bb705f-4cbe-4f4e-9682-a26bb4d90e8c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser",
+										"6da0d0f1-6cee-4d46-b119-c37b2454b8e1",
+										"ActivityComments",
+										"77bb705f-4cbe-4f4e-9682-a26bb4d90e8c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllUserComments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/NeoUser/6da0d0f1-6cee-4d46-b119-c37b2454b8e1/ActivityComments/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"NeoUser",
+										"6da0d0f1-6cee-4d46-b119-c37b2454b8e1",
+										"ActivityComments",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "MongoDB",
+			"item": [
+				{
+					"name": "Test Books",
+					"item": [
+						{
+							"name": "GetBooks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoBooks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoBooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get A Book",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoBooks/63b92f0c991cb84cfa65e74e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoBooks",
+										"63b92f0c991cb84cfa65e74e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Book",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"World Of Warcraft 2\",\n    \"price\": 49.99,\n    \"category\": \"MMORPG\",\n    \"author\": {\n        \"id\": \"BLIZZ\",\n        \"name\": \"Blizzard Entertainment\"\n    },\n    \"comments\": [\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/MongoBooks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoBooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Book",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"63b932e54b1424e17a3aa779\",\n    \"name\": \"World Of Warcraft 3\",\n    \"price\": 49.99,\n    \"category\": \"MMORPG\",\n    \"author\": {\n        \"id\": \"BLIZZ\",\n        \"name\": \"Blizzard Entertainment\"\n    },\n    \"something\": [\n        \"So epic!\",\n        \"Is going to be awesome!\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/MongoBooks/63b932e54b1424e17a3aa779",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoBooks",
+										"63b932e54b1424e17a3aa779"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Book",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoBooks/63b931ec4b1424e17a3aa778",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoBooks",
+										"63b931ec4b1424e17a3aa778"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Test Wine",
+					"item": [
+						{
+							"name": "Get Wine",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoWine",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWine"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get A Wine",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoWine/63b92f0c991cb84cfa65e74e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWine",
+										"63b92f0c991cb84cfa65e74e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Wine",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"string\",\n  \"brand\": \"Amarone\",\n  \"type\": \"string\",\n  \"producer\": {\n    \"id\": \"string\"\n  },\n  \"year\": \"string\",\n  \"country\": \"string\",\n  \"aContents\": \"string\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/MongoWine",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWine"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Wine",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"63b961aaa74200f16b6bff0a\",\n    \"brand\": \"Amarone\",\n    \"type\": \"Red\",\n    \"producer\": {\n        \"producer_id\": null\n    },\n    \"year\": \"2019\",\n    \"country\": \"Italy\",\n    \"aContents\": \"15.5%\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/MongoWines/63b961aaa74200f16b6bff0a",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWines",
+										"63b961aaa74200f16b6bff0a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Wine",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoWine/63b931ec4b1424e17a3aa778",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWine",
+										"63b931ec4b1424e17a3aa778"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Test Wine Producer",
+					"item": [
+						{
+							"name": "Get Producer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoWineProducer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWineProducer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get A Producer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoWineProducer/63bb3d0e8c56de80f3b6cdb1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWineProducer",
+										"63bb3d0e8c56de80f3b6cdb1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Producer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Delete Me!\",\n  \"address\": \"Somewhere far far away\",\n  \"country\": \"World of Warcraft\",\n  \"wineCollection\": [\n    \"\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/MongoWineProducer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWineProducer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Producer",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"63bb3d0e8c56de80f3b6cdb1\",\n    \"name\": \"Blizzard Entertainment\",\n    \"address\": \"Somewhere far far away\",\n    \"country\": \"World of Warcraft\",\n    \"wineCollection\": [\n        \"Something Smelly\",\n        \"I am Murlock! I am death\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/MongoWineProducer/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWineProducer",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Producer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/MongoWineProducer/63bb3de58c56de80f3b6cdb2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"MongoWineProducer",
+										"63bb3de58c56de80f3b6cdb2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:7032",
+			"type": "string"
+		}
+	]
+}
