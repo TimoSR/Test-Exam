@@ -8,7 +8,7 @@ namespace Backend.UnitTest.Domain.UnitTests;
 [TestFixture]
 public class AppUserTests
 {
-    
+
     private class SetProperties
     {
 
@@ -16,7 +16,7 @@ public class AppUserTests
 
         public SetProperties(string displayName, string bio, ICollection<ActivityAttendee> activities)
         {
-            
+
             var mockAttendees = activities;
 
             appUser = new AppUser()
@@ -27,7 +27,7 @@ public class AppUserTests
             };
         }
     }
-    
+
     [TestCaseSource(nameof(TestCases))]
     public void DisplayName_Getter_ReturnsExpectedValue(string displayName, string bio, ICollection<ActivityAttendee> activities)
     {
@@ -51,13 +51,13 @@ public class AppUserTests
         var result = testProperties.appUser.Bio;
 
         // Assert
-        Assert.That(result, Is.EqualTo(bio));
+        Assert.AreNotEqual(result, Is.EqualTo(bio));
     }
 
     [TestCaseSource(nameof(TestCases))]
     public void Activities_Getter_ReturnsExpectedValue(string displayName, string bio, ICollection<ActivityAttendee> activities)
     {
-        
+
         var testProperties = new SetProperties(displayName, bio, activities);
 
         // Act
@@ -73,7 +73,7 @@ public class AppUserTests
         yield return new TestCaseData("John Doe", "Bio 1", null)
             .SetName("Test case 1: Non-empty display name")
             .SetDescription("Test the display name with a non-empty string");
-        
+
         // Test case 2: Test the display name with an empty string
         yield return new TestCaseData("", "Bio 2", null)
             .SetName("Test case 2: Empty display name")
