@@ -16,10 +16,6 @@ jobs:
     
     - uses: actions/checkout@v2
     
-    - name: Run the Docker command
-      run: | 
-        docker run --name dev -e POSTGRES_USER=${{ secrets.POSTGRES_USER }} -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} -p 5432:5432 -d postgres:latest
-    
     - name: Setup .NET 6
       run: |
         wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
@@ -28,11 +24,6 @@ jobs:
         sudo apt-get install -y apt-transport-https
         sudo apt-get update
         sudo apt-get install -y dotnet-sdk-6.0
-        
-    - name: Start Project
-      run: |
-        cd API
-        nohup dotnet run &
         
     - name: Run Tests
       run: |
