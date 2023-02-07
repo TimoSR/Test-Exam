@@ -23,12 +23,12 @@ public class ActivityTests
         yield return new TestCaseData(Guid.NewGuid(), "Title 8", DateTime.Now.AddDays(6), "Description 8", "Category 8", true, new List<ActivityAttendee>());
     }
     
-    private class TestProperties
+    private class SetProperties
     {
 
         public Activity activity;
 
-        public TestProperties(Guid id, string title, DateTime date, string description, string category, bool isCancelled,
+        public SetProperties(Guid id, string title, DateTime date, string description, string category, bool isCancelled,
             ICollection<ActivityAttendee> attendees)
         {
             var mockAttendees = attendees;
@@ -49,8 +49,8 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Id_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
-        var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
+        // Arrange
+        var testProperties = new SetProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.Id;
@@ -62,8 +62,8 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Title_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
-        var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
+        // Arrange
+        var testProperties = new SetProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.Title;
@@ -76,8 +76,8 @@ public class ActivityTests
     public void Date_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
         
-        // Setup
-        var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
+        // Arrange
+        var testProperties = new SetProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.Date;
@@ -89,8 +89,8 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Description_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
-        var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
+        // Arrange
+        var testProperties = new SetProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.Description;
@@ -102,8 +102,8 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Category_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
-        var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
+        // Arrange
+        var testProperties = new SetProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.Category;
@@ -115,12 +115,12 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void IsCancelled_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
-        var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
+        // Arrange
+        var testProperties = new SetProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.IsCancelled;
-    
+        
         // Assert
         Assert.AreEqual(isCancelled, result);
     }
@@ -128,8 +128,8 @@ public class ActivityTests
     [Test, TestCaseSource(nameof(TestCases))]
     public void Attendees_Get_ShouldReturnCorrectValue(Guid id, string title, DateTime date, string description, string category, bool isCancelled, ICollection<ActivityAttendee> attendees)
     {
-        // Setup
-        var testProperties = new TestProperties(id, title, date, description, category, isCancelled, attendees);
+        // Arrange
+        var testProperties = new SetProperties(id, title, date, description, category, isCancelled, attendees);
 
         // Act
         var result = testProperties.activity.Attendees;
@@ -139,4 +139,3 @@ public class ActivityTests
     }
 
 }
-
