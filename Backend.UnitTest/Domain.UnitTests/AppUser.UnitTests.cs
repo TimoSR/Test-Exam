@@ -51,7 +51,8 @@ public class AppUserTests
         var result = testProperties.appUser.Bio;
 
         // Assert
-        Assert.AreNotEqual(result, Is.EqualTo(bio));
+        // Failing Test
+        Assert.That(result, !Is.EqualTo(bio));
     }
 
     [TestCaseSource(nameof(TestCases))]
