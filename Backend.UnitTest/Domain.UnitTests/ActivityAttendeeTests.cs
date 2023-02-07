@@ -103,10 +103,10 @@ public class ActivityAttendeeTests
         var attendee = testProperties.attendee;
 
         // Act
-        var resultActivity = attendee.Activity;
+        var resultAppUser = attendee.AppUser;
         
         // Assert
-        Assert.IsNotNull(resultActivity);
+        Assert.NotNull(resultAppUser);
         
     }
 
